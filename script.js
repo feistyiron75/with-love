@@ -35,17 +35,14 @@ function showQuote() {
     index = (index + 1) % quotes.length;
 }
 
-setInterval(showQuote, 7000); // Shuffle every 7 seconds
+setInterval(showQuote, 7000); // Shuffle quotes every 7 seconds
 
 quoteElement.addEventListener('click', showQuote);
 
-// Initial call to display quotes
-showQuote();
-
 // Photo Collage Setup
 function shufflePhotos() {
-    collageContainer.innerHTML = '';
     const shuffledImages = collageImages.sort(() => 0.5 - Math.random());
+    collageContainer.innerHTML = '';
     shuffledImages.forEach(src => {
         const img = document.createElement('img');
         img.src = src;
@@ -58,5 +55,6 @@ function shufflePhotos() {
 
 setInterval(shufflePhotos, 7000); // Change photos every 7 seconds
 
-// Initial call to display photos
+// Initial call to display photos and quotes
 shufflePhotos();
+showQuote();
