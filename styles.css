@@ -79,7 +79,6 @@ body, html {
     background: linear-gradient(45deg, rgba(255, 255, 0, 0.5), rgba(255, 0, 255, 0.5), rgba(0, 255, 255, 0.5)); /* Fluid, vibrant background */
     backdrop-filter: blur(8px);
     height: 50vh;
-    margin-top: -20px; /* Reduced gap between photo collage and quote section */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -114,8 +113,8 @@ body, html {
 
 /* Footer */
 .footer {
-    background: linear-gradient(to bottom, palecyan, white); /* Changed to pale cyan gradient with white */
-    font-size: 1.2vw; /* Reduced font size */
+    background: linear-gradient(to bottom, paleblue, white); /* Changed to pale blue gradient with white */
+    font-size: 0.8vw; /* Reduced font size */
     color: #222;
     padding: 20px;
     text-align: center;
@@ -123,7 +122,7 @@ body, html {
 
 .bottom-left, .bottom-right {
     margin: 10px;
-    font-size: 1vw;
+    font-size: 0.7vw; /* Reduced further */
 }
 
 .centered-footer {
