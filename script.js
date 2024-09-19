@@ -39,7 +39,7 @@ quoteElement.addEventListener('click', displayNextQuote);
 const photos = document.querySelectorAll('.photo-grid img');
 function shufflePhotos() {
     photos.forEach((photo, index) => {
-        const randomShift = Math.random() * 30;
+        const randomShift = Math.random() * 20 - 10;
         photo.style.transform = `translate(${randomShift}px, ${randomShift}px)`;
     });
 }
