@@ -48,12 +48,13 @@ function shufflePhotos() {
         img.src = src;
         img.style.transition = 'transform 0.7s ease-in-out, opacity 0.7s ease-in-out';
         img.style.opacity = Math.random() * 0.5 + 0.5; // Random opacity between 0.5 and 1
-        img.style.transform = `scale(${Math.random() * 0.5 + 0.75})`; // Random scale between 0.75 and 1.25
+        img.style.transform = `scale(${Math.random() * 0.3 + 0.5})`; // Random scale between 0.5 and 0.8 (smaller size)
         collageContainer.appendChild(img);
     });
 }
 
 setInterval(shufflePhotos, 7000); // Change photos every 7 seconds
+
 
 // Initial call to display photos and quotes
 shufflePhotos();
