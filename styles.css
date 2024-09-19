@@ -21,11 +21,11 @@ body, html {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.9); /* Thicker, darker header */
+    background: rgba(0, 0, 0, 0.9); /* Thicker black layer */
     color: white;
     text-align: center;
-    font-size: 2.5em;
-    padding: 20px; /* Increased padding to make the header thicker */
+    font-size: 2em;
+    padding: 20px;
     z-index: 1000;
     transition: top 0.3s;
 }
@@ -47,11 +47,9 @@ body, html {
 }
 
 @keyframes colorShift {
-    0%, 100% {
-        color: darkred;
-    }
-    50% {
-        color: red; /* Transition to bright red */
+  @keyframes glow {
+    0%, 100% { color: darkred; }
+    50% { color: red; /* Transition to bright red */
     }
 }
 
@@ -61,33 +59,32 @@ body, html {
     top: 10px;
     left: 10px;
     font-size: 2vw;
-    font-family: 'Vogue Serif', serif; /* Change font */
+    font-family: 'Vogue Serif', serif; /* Classic Vogue Font */
     color: white;
     z-index: 1000;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* Photo Collage Background */
+/* Scrapbook-style Photo Collage */
 .photo-collage {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr); /* 8 columns */
-    grid-template-rows: repeat(5, 1fr); /* 5 rows */
-    gap: 5px;
-    width: 100%;
-    padding-top: 100px; /* Adjust for thicker header */
-    padding-bottom: 60px; /* Adjust for footer height */
     position: relative;
+    height: 100vh;
+    width: 100vw;
+    padding-top: 120px; /* Adjust for thicker header */
     overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Individual photos in the collage */
 .photo-collage img {
-    width: 100%;
-    height: auto;
+    position: absolute;
+    width: 10vw;
+    height: 10vw;
     object-fit: cover;
     transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
-    opacity: 0.8; /* Lower opacity for aesthetic */
-    transform: scale(0.7); /* Reduce size of the photos */
+    opacity: 0.8;
 }
 
 /* Gradient Layer */
@@ -110,21 +107,33 @@ body, html {
     100% { background-position: 0% 0%; }
 }
 
+/* Quotes Section */
+.quote-container {
+    position: relative;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 0, 0, 0.3));
+    backdrop-filter: blur(5px);
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    opacity: 0.9;
+}
+
 .quote {
-    font-size: 2.5vw; /* Increased font size */
+   .quote {
+    font-size: 2vw;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     font-style: italic;
     color: black;
-    opacity: 0.9; /* Increased opacity */
-    padding: 20px;
-    cursor: pointer; /* Indicate clickability */
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Smooth transitions */
+    opacity: 0.8;
+    padding: 20px; /* Smooth transitions */
 }
 
 .author {
     text-align: right;
-    font-size: 1.5vw;
+    font-size: 1.0vw;
     font-style: italic;
     color: #333;
     padding-right: 20px;
@@ -136,13 +145,12 @@ body, html {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: rgba(224, 255, 255, 0.7); /* Pale cyan background */
-    font-size: 1.2vw; /* Reduced font size */
+   background: palecyan;
+    font-size: 1.5vw;
     color: #222;
     padding: 20px;
     text-align: center;
-    font-family: 'Icona Sans', sans-serif; /* Change font */
-    margin-top: 20px; /* Ensure footer comes after the quote */
+    margin-top: 30px /* Ensure footer comes after the quote */
 }
 
 .bottom-left {
@@ -179,7 +187,8 @@ body, html {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+/* Responsive Design */
+@media (max-width: 800px) {
     .header {
         font-size: 4vw;
     }
@@ -193,10 +202,10 @@ body, html {
     }
 
     .footer {
-        font-size: 2vw;
+        font-size: 1.5vw;
     }
 
     .yes-button {
-        font-size: 3vw;
+        font-size: 1.5vw;
     }
 }
