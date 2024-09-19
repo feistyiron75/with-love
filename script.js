@@ -22,49 +22,45 @@ const quotes = [
 
 let index = 0;
 const quoteElement = document.getElementById("quote");
-const quoteContainer = document.getElementById("quote-container");
+const collageContainer = document.querySelector('.photo-collage');
+const collageImages = Array.from({ length: 26 }, (_, i) => `images/photo${i + 1}.jpg`);
 
 function showQuote() {
     quoteElement.innerHTML = `“${quotes[index]}”`;
+    quoteElement.style.opacity = 0;
+    setTimeout(() => {
+        quoteElement.style.opacity = 1;
+        quoteElement.style.transform = 'scale(1.05)';
+        setTimeout(() => quoteElement.style.transform = 'scale(1)', 500);
+    }, 100); // Short delay before fade-in
+
     index = (index + 1) % quotes.length;
 }
 
-function nextQuoteOnClick() {
-    quoteContainer.addEventListener('click', showQuote);
+function nextQuote() {
+    index = (index + 1) % quotes.length;
+    showQuote();
 }
 
+quoteElement.addEventListener('click', nextQuote);
+
 setInterval(showQuote, 7000); // Change quote every 7 seconds
-showQuote();
-nextQuoteOnClick();
 
-// Shuffling images randomly with a 7-second delay
-const collageContainer = document.querySelector('.photo-collage');
-const collageImages = [
-    'img1.jpg', 'img2.jpg', 'img3.jpg', /* Add paths to your images here */
-];
-
-function populateCollage() {
-    collageImages.forEach(src => {
+// Photo Collage Setup
+function shufflePhotos() {
+    collageContainer.innerHTML = '';
+    const shuffledImages = collageImages.sort(() => 0.5 - Math.random());
+    shuffledImages.forEach(src => {
         const img = document.createElement('img');
         img.src = src;
-        img.classList.add(Math.random() > 0.5 ? 'large' : 'medium');
+        img.style.transition = 'transform 0.7s ease-in-out, opacity 0.7s ease-in-out';
+        img.style.opacity = Math.random() * 0.5 + 0.5; // Random opacity between 0.5 and 1
+        img.style.transform = `scale(${Math.random() * 0.5 + 0.75})`; // Random scale between 0.75 and 1.25
         collageContainer.appendChild(img);
     });
 }
 
-populateCollage();
+setInterval(shufflePhotos, 7000); // Change photos every 7 seconds
 
-function shuffleCollage() {
-    const images = document.querySelectorAll('.photo-collage img');
-    images.forEach((img, i) => {
-        setTimeout(() => {
-            collageContainer.removeChild(img);
-            const newImg = document.createElement('img');
-            newImg.src = collageImages[Math.floor(Math.random() * collageImages.length)];
-            newImg.classList.add(Math.random() > 0.5 ? 'large' : 'medium');
-            collageContainer.appendChild(newImg);
-        }, Math.random() * 7000); // Random delay within 7 seconds
-    });
-}
-
-setInterval(shuffleCollage, 7000); // Shuffle every 7 seconds
+// Initial call to display photos
+shufflePhotos();
