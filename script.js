@@ -35,17 +35,12 @@ setInterval(displayNextQuote, 7000);
 // Trigger next quote on click
 quoteElement.addEventListener('click', displayNextQuote);
 
-// Grid photo shuffling with smooth random transitions
+// Grid photo shuffling with smooth uniform transitions
 const photos = document.querySelectorAll('.photo-grid img');
 function shufflePhotos() {
     photos.forEach((photo, index) => {
-        const randomDelay = Math.random() * 5;
-        setTimeout(() => {
-            const randomPosition = Math.floor(Math.random() * photos.length);
-            const randomShift = Math.random() * 30;
-            photo.style.transform = `translate(${randomShift}px, ${randomShift}px)`;
-            photos[randomPosition].style.order = index;
-        }, randomDelay * 1000);
+        const randomShift = Math.random() * 30;
+        photo.style.transform = `translate(${randomShift}px, ${randomShift}px)`;
     });
 }
 
