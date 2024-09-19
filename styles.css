@@ -70,14 +70,24 @@ body, html {
 /* Photo Collage Background */
 .photo-collage {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    grid-template-rows: repeat(4, 1fr); /* 4 rows */
+    grid-template-columns: repeat(8, 1fr); /* 8 columns */
+    grid-template-rows: repeat(5, 1fr); /* 5 rows */
     gap: 5px;
     width: 100%;
     padding-top: 100px; /* Adjust for thicker header */
     padding-bottom: 60px; /* Adjust for footer height */
     position: relative;
-    overflow: hidden; /* Ensure background images don’t overflow */
+    overflow: hidden;
+}
+
+/* Individual photos in the collage */
+.photo-collage img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+    opacity: 0.8; /* Lower opacity for aesthetic */
+    transform: scale(0.7); /* Reduce size of the photos */
 }
 
 /* Gradient Layer */
