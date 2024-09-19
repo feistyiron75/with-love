@@ -39,7 +39,7 @@ quoteElement.addEventListener('click', displayNextQuote);
 const photos = document.querySelectorAll('.photo-grid img');
 function shufflePhotos() {
     photos.forEach((photo, index) => {
-        const randomDelay = Math.random() * 5; // Random delay between 0 and 5 seconds
+        const randomDelay = Math.random() * 13; // Random delay between 7 and 13 seconds
         setTimeout(() => {
             const randomPosition = Math.floor(Math.random() * photos.length);
             photos[randomPosition].style.order = index;
