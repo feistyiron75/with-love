@@ -11,8 +11,6 @@ body, html {
     font-family: 'Georgia', serif;
     overflow-x: hidden;
     overflow-y: auto;
-    display: flex;
-    flex-direction: column;
 }
 
 /* Header */
@@ -35,22 +33,18 @@ body, html {
     position: absolute;
     top: 10px;
     right: 10px;
-    color: darkred; /* Start with dark red */
-    font-size: 1.5em;
-    animation: blink 1s step-start infinite, colorShift 1.5s infinite; /* Added color transition */
-    padding: 2px;
-    font-family: 'Times New Roman', Times, serif; /* Match quote font */
+    color: darkred;
+    font-size: 1.2em;
+    animation: blink 1s step-start infinite, glow 1s ease-in-out infinite;
 }
 
 @keyframes blink {
     50% { opacity: 0; }
 }
 
-@keyframes colorShift {
-  @keyframes glow {
+@keyframes glow {
     0%, 100% { color: darkred; }
-    50% { color: red; /* Transition to bright red */
-    }
+    50% { color: red; }
 }
 
 /* Top-left text */
@@ -59,52 +53,30 @@ body, html {
     top: 10px;
     left: 10px;
     font-size: 2vw;
-    font-family: 'Vogue Serif', serif; /* Classic Vogue Font */
+    font-family: 'Vogue', serif; /* Classic Vogue Font */
     color: white;
     z-index: 1000;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* Scrapbook-style Photo Collage */
-.photo-collage {
-    position: relative;
+/* Grid Layout for Photo Collage */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* 8 columns */
+    grid-template-rows: repeat(5, 1fr); /* 5 rows */
+    gap: 5px;
+    width: 100%;
     height: 100vh;
-    width: 100vw;
     padding-top: 120px; /* Adjust for thicker header */
     overflow: hidden;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
 }
 
-.photo-collage img {
-    position: absolute;
-    width: 10vw;
-    height: 10vw;
+.photo-grid img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
     opacity: 0.8;
-}
-
-/* Gradient Layer */
-.quote-container {
-    position: relative;
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 0, 0, 0.4), rgba(255, 255, 0, 0.5));
-    backdrop-filter: blur(5px);
-    height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    animation: gradientFlow 10s infinite linear;
-    opacity: 0.9; /* Increased opacity */
-}
-
-@keyframes gradientFlow {
-    0% { background-position: 0% 0%; }
-    50% { background-position: 100% 100%; }
-    100% { background-position: 0% 0%; }
 }
 
 /* Quotes Section */
@@ -121,19 +93,18 @@ body, html {
 }
 
 .quote {
-   .quote {
     font-size: 2vw;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     font-style: italic;
     color: black;
     opacity: 0.8;
-    padding: 20px; /* Smooth transitions */
+    padding: 20px;
 }
 
 .author {
     text-align: right;
-    font-size: 1.0vw;
+    font-size: 1.5vw;
     font-style: italic;
     color: #333;
     padding-right: 20px;
@@ -141,30 +112,27 @@ body, html {
 
 /* Footer */
 .footer {
-    position: relative;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-   background: palecyan;
+    background: palecyan;
     font-size: 1.5vw;
     color: #222;
     padding: 20px;
     text-align: center;
-    margin-top: 30px /* Ensure footer comes after the quote */
+    margin-top: 30px;
+}
+
+.bottom-left, .bottom-right {
+    position: absolute;
+    font-size: 1.2em;
 }
 
 .bottom-left {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    font-size: 1.2em;
+    left: 20px;
+    bottom: 10px;
 }
 
 .bottom-right {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    font-size: 1.2em;
+    right: 20px;
+    bottom: 10px;
 }
 
 .centered-footer {
@@ -187,8 +155,7 @@ body, html {
 }
 
 /* Responsive Design */
-/* Responsive Design */
-@media (max-width: 800px) {
+@media (max-width: 768px) {
     .header {
         font-size: 4vw;
     }
@@ -202,10 +169,10 @@ body, html {
     }
 
     .footer {
-        font-size: 1.5vw;
+        font-size: 2vw;
     }
 
     .yes-button {
-        font-size: 1.5vw;
+        font-size: 3vw;
     }
 }
