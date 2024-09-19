@@ -33,25 +33,16 @@ body, html {
     position: absolute;
     top: 10px;
     right: 10px;
-    color: darkred;
+    color: matte red; /* Change to matte red color */
     font-size: 1.2em;
-    font-family: 'Times New Roman', Times, serif;
-    color: matte red;
-    animation: blink 2s step-start infinite;
-}
-
-.blinking-text::first-letter {
-    border: 1px solid pink; /* Glitter border on letters */
-    animation: glitter 2s linear infinite;
+    animation: blink 1s step-start infinite;
+    border: 1px solid matte pink; /* Glitter border */
+    padding: 2px;
+    font-family: 'Times New Roman', Times, serif; /* Match quote font */
 }
 
 @keyframes blink {
-    50% { opacity: 0.5; }
-}
-
-@keyframes glitter {
-    0% { box-shadow: 0 0 5px pink; }
-    100% { box-shadow: 0 0 20px pink; }
+    50% { opacity: 0; }
 }
 
 /* Top-left text */
@@ -60,7 +51,7 @@ body, html {
     top: 10px;
     left: 10px;
     font-size: 2vw;
-    font-family: 'Vogue Serif', serif; /* Changed font to Vogue Serif */
+    font-family: 'Vogue Serif', serif; /* Change font */
     color: white;
     z-index: 1000;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
@@ -69,38 +60,19 @@ body, html {
 /* Photo Collage Background */
 .photo-collage {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 5px;
     width: 100%;
     padding-top: 60px; /* Adjust for header height */
     padding-bottom: 60px; /* Adjust for footer height */
     position: relative;
-    overflow: auto;
+    overflow: hidden; /* Ensure background images don’t overflow */
 }
 
-/* Image Sizing */
-.photo-collage img {
-    object-fit: cover;
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    transition: transform 0.8s ease-in-out;
-}
-
-.photo-collage img.large {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-.photo-collage img.medium {
-    grid-column: span 1;
-    grid-row: span 1;
-}
-
-/* Quotes Section */
+/* Gradient Layer */
 .quote-container {
     position: relative;
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 0, 0, 0.3), rgba(255, 255, 0, 0.4)); /* Increased vibrance */
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 0, 0, 0.4), rgba(255, 255, 0, 0.5));
     backdrop-filter: blur(5px);
     height: 50vh;
     display: flex;
@@ -118,13 +90,15 @@ body, html {
 }
 
 .quote {
-    font-size: 2vw;
+    font-size: 2.5vw; /* Increased font size */
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     font-style: italic;
     color: black;
-    opacity: 0.8;
+    opacity: 0.9; /* Increased opacity */
     padding: 20px;
+    cursor: pointer; /* Indicate clickability */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Smooth transitions */
 }
 
 .author {
@@ -137,30 +111,34 @@ body, html {
 
 /* Footer */
 .footer {
-    position: relative;
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.7);
-    font-size: 1vw;
-    font-family: 'Icona Sans', sans-serif; /* Changed font to Icona Sans */
+    font-size: 1.2vw; /* Reduced font size */
     color: #222;
-    padding: 10px;
+    padding: 20px;
     text-align: center;
-    display: flex;
-    justify-content: space-between;
+    font-family: 'Icona Sans', sans-serif; /* Change font */
 }
 
 .bottom-left {
-    text-align: left;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 1.2em;
 }
 
 .bottom-right {
-    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 1.2em;
 }
 
 .centered-footer {
-    text-align: center;
+    margin-top: 20px;
 }
 
 .yes-button {
@@ -193,7 +171,7 @@ body, html {
     }
 
     .footer {
-        font-size: 1.5vw;
+        font-size: 2vw;
     }
 
     .yes-button {
