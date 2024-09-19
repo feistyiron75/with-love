@@ -38,8 +38,10 @@ const collageImages = Array.from({length: 26}, (_, i) => `images/photo${i + 1}.j
 const collage = document.querySelectorAll('.photo-collage img');
 
 function shufflePhotos() {
-    collage.forEach((img) => {
-        img.src = collageImages[Math.floor(Math.random() * collageImages.length)];
+    collage.forEach((img, index) => {
+        setTimeout(() => {
+            img.src = collageImages[Math.floor(Math.random() * collageImages.length)];
+        }, index * 500); // Stagger the image changes by 0.5 seconds
     });
 }
 
