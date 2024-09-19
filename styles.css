@@ -1,4 +1,24 @@
-    100%;
+   /* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body & Background */
+body, html {
+    height: 100%;
+    font-family: 'Georgia', serif;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
     background: rgba(0, 0, 0, 0.85); /* Increased opacity for thicker header layer */
     color: white;
     text-align: center;
