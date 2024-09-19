@@ -26,7 +26,7 @@ const quoteElement = document.getElementById('quote');
 // Shuffle quotes every 7 seconds
 function displayNextQuote() {
     currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
-    quoteElement.textContent = quotes[currentQuoteIndex];
+    quoteElement.textContent = `“${quotes[currentQuoteIndex]}”`;
 }
 
 setInterval(displayNextQuote, 7000);
@@ -43,4 +43,4 @@ function shufflePhotos() {
     });
 }
 
-setInterval(shufflePhotos, 7000);
+setInterval(shufflePhotos, 7000); // shuffle after 7 seconds //
