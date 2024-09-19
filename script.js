@@ -1,3 +1,4 @@
+// Quotes and Photos
 const quotes = [
      "More actions, less words.",
     "A true love story never ends.",
@@ -26,7 +27,7 @@ const quoteElement = document.getElementById('quote');
 // Shuffle quotes every 7 seconds
 function displayNextQuote() {
     currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
-    quoteElement.textContent = `“${quotes[currentQuoteIndex]}”`;
+    quoteElement.textContent = quotes[currentQuoteIndex];
 }
 
 setInterval(displayNextQuote, 7000);
@@ -34,12 +35,16 @@ setInterval(displayNextQuote, 7000);
 // Trigger next quote on click
 quoteElement.addEventListener('click', displayNextQuote);
 
-// Grid photo shuffling
+// Grid photo shuffling with random positions
 const photos = document.querySelectorAll('.photo-grid img');
 function shufflePhotos() {
-    photos.forEach(photo => {
-        const randomScale = Math.random() * 0.2 + 0.9; // Random scaling between 0.9 and 1.1
-        photo.style.transform = `scale(${randomScale})`;
+    photos.forEach((photo, index) => {
+        const randomDelay = Math.random() * 5; // Random delay between 0 and 5 seconds
+        setTimeout(() => {
+            const randomPosition = Math.floor(Math.random() * photos.length);
+            photos[randomPosition].style.order = index;
+            photos[index].style.transform = `translate(${Math.random() * 20}px, ${Math.random() * 20}px)`;
+        }, randomDelay * 1000);
     });
 }
 
