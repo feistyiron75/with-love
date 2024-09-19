@@ -1,0 +1,156 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body & Background */
+body, html {
+    height: 100%;
+    font-family: 'Georgia', serif;
+}
+
+/* Top-left text */
+.top-left-text {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 2vw; /* Responsive text size */
+    font-family: 'Calibri', sans-serif; /* Calibri font style */
+    color: white;
+    z-index: 1000; /* Ensure it stays on top of other elements */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for visibility */
+}
+
+/* Header */
+.header h1 {
+    text-align: center;
+    font-size: 6vw;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 20px; /* Adjust based on design */
+    width: 100%;
+}
+
+/* Photo Collage Background */
+.photo-collage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensures collage stays in the background */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid */
+    gap: 5px; /* Space between photos */
+}
+
+.photo-collage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures photos fit nicely */
+    opacity: 0.8;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.photo-collage img:hover {
+    opacity: 1;
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Gradient Layer */
+.quote-container {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 0, 0, 0.3), rgba(255, 255, 0, 0.2));
+    background-size: 200% 200%;
+    backdrop-filter: blur(10px);
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    animation: gradientFlow 15s linear infinite; /* Animation for gradient flow */
+}
+
+.quote {
+    font-size: 2vw;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold; /* Bold text */
+    font-style: italic;
+    color: black;
+    opacity: 0.8;
+    padding: 20px;
+}
+
+.author {
+    text-align: right;
+    font-size: 1.5vw;
+    font-style: italic;
+    color: #333;
+    padding-right: 20px;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 0.8vw;
+    color: #222;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.centered-footer {
+    text-align: center;
+    width: 100%;
+}
+
+.yes-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1vw;
+    color: white;
+    background-color: green;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.yes-button:hover {
+    background-color: darkgreen;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 12vw;
+    }
+
+    .quote {
+        font-size: 4vw;
+    }
+
+    .author {
+        font-size: 3vw;
+    }
+
+    footer {
+        font-size: 2vw;
+    }
+
+    .yes-button {
+        font-size: 3vw;
+    }
+}
+
+/* Gradient Animation */
+@keyframes gradientFlow {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
