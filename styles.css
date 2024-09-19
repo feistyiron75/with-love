@@ -21,11 +21,11 @@ body, html {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.9); /* Thicker, darker header */
     color: white;
     text-align: center;
-    font-size: 2em;
-    padding: 10px;
+    font-size: 2.5em;
+    padding: 20px; /* Increased padding to make the header thicker */
     z-index: 1000;
     transition: top 0.3s;
 }
@@ -35,9 +35,9 @@ body, html {
     position: absolute;
     top: 10px;
     right: 10px;
-    color: matte red; /* Changed to matte red color */
-    font-size: 1.2em;
-    animation: blink 1s step-start infinite, glitter 1.5s infinite;
+    color: darkred; /* Start with dark red */
+    font-size: 1.5em;
+    animation: blink 1s step-start infinite, colorShift 1.5s infinite; /* Added color transition */
     padding: 2px;
     font-family: 'Times New Roman', Times, serif; /* Match quote font */
 }
@@ -46,12 +46,12 @@ body, html {
     50% { opacity: 0; }
 }
 
-@keyframes glitter {
+@keyframes colorShift {
     0%, 100% {
-        text-shadow: 0px 0px 5px lightpink, 0px 0px 10px lightpink;
+        color: darkred;
     }
     50% {
-        text-shadow: 0px 0px 10px lightpink, 0px 0px 15px lightpink;
+        color: red; /* Transition to bright red */
     }
 }
 
@@ -70,10 +70,11 @@ body, html {
 /* Photo Collage Background */
 .photo-collage {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Aligned grid */
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    grid-template-rows: repeat(4, 1fr); /* 4 rows */
     gap: 5px;
     width: 100%;
-    padding-top: 60px; /* Adjust for header height */
+    padding-top: 100px; /* Adjust for thicker header */
     padding-bottom: 60px; /* Adjust for footer height */
     position: relative;
     overflow: hidden; /* Ensure background images don’t overflow */
@@ -131,7 +132,7 @@ body, html {
     padding: 20px;
     text-align: center;
     font-family: 'Icona Sans', sans-serif; /* Change font */
-    margin-top: auto; /* Ensure footer is at the bottom */
+    margin-top: 20px; /* Ensure footer comes after the quote */
 }
 
 .bottom-left {
