@@ -20,42 +20,29 @@ const quotes = [
     "You are the BESTEST."
 ];
 
-let index = 0;
-const quoteElement = document.getElementById("quote");
-const collageContainer = document.querySelector('.photo-collage');
-const collageImages = Array.from({ length: 26 }, (_, i) => `images/photo${i + 1}.jpg`);
+let currentQuoteIndex = 0;
+const quoteElement = document.getElementById('quote');
 
-function showQuote() {
-    quoteElement.innerHTML = `“${quotes[index]}”`;
-    quoteElement.style.opacity = 0;
-    setTimeout(() => {
-        quoteElement.style.opacity = 1;
-        quoteElement.style.transform = 'scale(1.05)';
-    }, 300);
-    index = (index + 1) % quotes.length;
+// Shuffle quotes every 7 seconds
+function displayNextQuote() {
+    currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+    quoteElement.textContent = quotes[currentQuoteIndex];
 }
 
-setInterval(showQuote, 7000); // Shuffle quotes every 7 seconds
+setInterval(displayNextQuote, 7000);
 
-quoteElement.addEventListener('click', showQuote);
+// Trigger next quote on click
+quoteElement.addEventListener('click', displayNextQuote);
 
-// Photo Collage Setup
+// Scrapbook photo shuffling
+const photos = document.querySelectorAll('.photo-collage img');
 function shufflePhotos() {
-    const shuffledImages = collageImages.sort(() => 0.5 - Math.random());
-    collageContainer.innerHTML = '';
-    shuffledImages.forEach(src => {
-        const img = document.createElement('img');
-        img.src = src;
-        img.style.transition = 'transform 0.7s ease-in-out, opacity 0.7s ease-in-out';
-        img.style.opacity = Math.random() * 0.5 + 0.5; // Random opacity between 0.5 and 1
-        img.style.transform = `scale(${Math.random() * 0.3 + 0.5})`; // Random scale between 0.5 and 0.8 (smaller size)
-        collageContainer.appendChild(img);
+    photos.forEach(photo => {
+        const randomX = Math.floor(Math.random() * 90) + 'vw';
+        const randomY = Math.floor(Math.random() * 90) + 'vh';
+        const randomRotation = Math.floor(Math.random() * 360) + 'deg';
+        photo.style.transform = `translate(${randomX}, ${randomY}) rotate(${randomRotation})`;
     });
 }
 
-setInterval(shufflePhotos, 7000); // Change photos every 7 seconds
-
-
-// Initial call to display photos and quotes
-shufflePhotos();
-showQuote();
+setInterval(shufflePhotos, 7000); // Shuffle photos every 7 seconds
