@@ -22,20 +22,26 @@ const quotes = [
 
 let index = 0;
 const quoteElement = document.getElementById("quote");
+const quoteContainer = document.getElementById("quote-container");
 
 function showQuote() {
     quoteElement.innerHTML = `“${quotes[index]}”`;
     index = (index + 1) % quotes.length;
 }
 
-setInterval(showQuote, 6000); // Change quote every 6 seconds
+function nextQuoteOnClick() {
+    quoteContainer.addEventListener('click', showQuote);
+}
 
+setInterval(showQuote, 7000); // Change quote every 7 seconds
 showQuote();
+nextQuoteOnClick();
 
-// Shuffling collage images
-const collageImages = Array.from({ length: 26 }, (_, i) => `images/photo${i + 1}.jpg`);
-
+// Shuffling images randomly with a 7-second delay
 const collageContainer = document.querySelector('.photo-collage');
+const collageImages = [
+    'img1.jpg', 'img2.jpg', 'img3.jpg', /* Add paths to your images here */
+];
 
 function populateCollage() {
     collageImages.forEach(src => {
@@ -49,9 +55,16 @@ function populateCollage() {
 populateCollage();
 
 function shuffleCollage() {
-    collageContainer.innerHTML = ''; // Clear current images
-    collageImages.sort(() => Math.random() - 0.5); // Shuffle
-    populateCollage();
+    const images = document.querySelectorAll('.photo-collage img');
+    images.forEach((img, i) => {
+        setTimeout(() => {
+            collageContainer.removeChild(img);
+            const newImg = document.createElement('img');
+            newImg.src = collageImages[Math.floor(Math.random() * collageImages.length)];
+            newImg.classList.add(Math.random() > 0.5 ? 'large' : 'medium');
+            collageContainer.appendChild(newImg);
+        }, Math.random() * 7000); // Random delay within 7 seconds
+    });
 }
 
-setInterval(shuffleCollage, 10000); // Shuffle every 10 seconds
+setInterval(shuffleCollage, 7000); // Shuffle every 7 seconds
