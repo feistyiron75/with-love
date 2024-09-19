@@ -1,4 +1,4 @@
-   /* Reset */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -18,12 +18,12 @@ body, html {
     position: fixed;
     top: 0;
     left: 0;
-    width:100%;
-    background: rgba(0, 0, 0, 0.85); /* Increased opacity for thicker header layer */
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85); /* Thicker black header layer */
     color: white;
     text-align: center;
     font-size: 2em;
-    padding: 15px; /* Increased padding for a thicker header */
+    padding: 15px;
     z-index: 1000;
 }
 
@@ -70,7 +70,7 @@ body, html {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 1s ease-in-out; /* Smooth transition */
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
 }
 
 /* Quote Section */
@@ -79,6 +79,7 @@ body, html {
     background: linear-gradient(45deg, rgba(255, 255, 0, 0.5), rgba(255, 0, 255, 0.5), rgba(0, 255, 255, 0.5)); /* Fluid, vibrant background */
     backdrop-filter: blur(8px);
     height: 50vh;
+    margin-top: -20px; /* Reduced gap between photo collage and quote section */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -104,11 +105,6 @@ body, html {
     cursor: pointer;
 }
 
-.quote:before, .quote:after {
-    content: "“";
-    font-size: 3vw;
-}
-
 .author {
     text-align: right;
     font-size: 1.8vw;
@@ -118,7 +114,7 @@ body, html {
 
 /* Footer */
 .footer {
-    background: palecyan;
+    background: linear-gradient(to bottom, palecyan, white); /* Changed to pale cyan gradient with white */
     font-size: 1.2vw; /* Reduced font size */
     color: #222;
     padding: 20px;
