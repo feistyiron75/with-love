@@ -31,20 +31,16 @@ function showQuote() {
     setTimeout(() => {
         quoteElement.style.opacity = 1;
         quoteElement.style.transform = 'scale(1.05)';
-        setTimeout(() => quoteElement.style.transform = 'scale(1)', 500);
-    }, 100); // Short delay before fade-in
-
+    }, 300);
     index = (index + 1) % quotes.length;
 }
 
-function nextQuote() {
-    index = (index + 1) % quotes.length;
-    showQuote();
-}
+setInterval(showQuote, 7000); // Shuffle every 7 seconds
 
-quoteElement.addEventListener('click', nextQuote);
+quoteElement.addEventListener('click', showQuote);
 
-setInterval(showQuote, 7000); // Change quote every 7 seconds
+// Initial call to display quotes
+showQuote();
 
 // Photo Collage Setup
 function shufflePhotos() {
