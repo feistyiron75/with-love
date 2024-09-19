@@ -35,14 +35,29 @@ showQuote();
 // Shuffling collage images
 const collageImages = Array.from({length: 26}, (_, i) => `images/photo${i + 1}.jpg`);
 
-const collage = document.querySelectorAll('.photo-collage img');
+const collageContainer = document.querySelector('.photo-collage');
 
-function shufflePhotos() {
-    collage.forEach((img, index) => {
-        setTimeout(() => {
-            img.src = collageImages[Math.floor(Math.random() * collageImages.length)];
-        }, index * 500); // Stagger the image changes by 0.5 seconds
+function populateCollage() {
+    collageImages.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = 'Collage Image';
+        collageContainer.appendChild(img);
     });
 }
 
-setInterval(shufflePhotos, 10000); // Shuffle every 10 seconds
+populateCollage();
+
+function shufflePhotos() {
+    const images = collageContainer.querySelectorAll('img');
+    images.forEach(img => {
+        img.style.opacity = '0'; // Fade out before changing
+        setTimeout(() => {
+            const randomIndex = Math.floor(Math.random() * collageImages.length);
+            img.src = collageImages[randomIndex];
+            img.style.opacity = '1'; // Fade in new image
+        }, 1000); // Ensure fade-out time
+    });
+}
+
+setInterval(shufflePhotos, 9000); // Shuffle every 9 seconds
