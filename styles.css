@@ -9,7 +9,7 @@
 body, html {
     height: 100%;
     font-family: 'Georgia', serif;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow: hidden; /* Prevent scrollbars on body */
 }
 
 /* Top-left text */
@@ -17,38 +17,45 @@ body, html {
     position: fixed;
     top: 10px;
     left: 10px;
-    font-size: 1.5vw; /* Responsive text size */
-    font-family: 'Calibri', sans-serif; /* Font style */
+    font-size: 2vw; /* Responsive text size */
+    font-family: 'Calibri', sans-serif; /* Calibri font */
     color: white;
     z-index: 1000; /* Ensure it stays on top of other elements */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for visibility */
 }
 
 /* Header */
-.header h1 {
-    text-align: center;
-    font-size: 4vw;
-    font-family: 'Times New Roman', Times, serif; /* Font style */
-    color: black;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+.header {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.5); /* Light background for better text visibility */
+    background: rgba(255, 255, 255, 0.6); /* Semi-transparent background */
+    padding: 10px;
+    text-align: center;
+    z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+.header h1 {
+    font-size: 5vw;
+    font-family: 'Times New Roman', serif;
+    color: black;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+    margin: 0;
 }
 
 /* Photo Collage Background */
 .photo-collage {
-    position: fixed;
-    top: 4vw; /* Adjusted to make space for header */
+    position: absolute;
+    top: 0;
     left: 0;
     width: 100%;
-    height: calc(100% - 8vw); /* Adjusted to make space for header and footer */
-    z-index: -1; /* Ensures collage stays in the background */
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid */
     gap: 5px; /* Space between photos */
     overflow: auto; /* Allow scrolling */
+    z-index: -1; /* Ensures collage stays in the background */
 }
 
 .photo-collage img {
@@ -66,20 +73,22 @@ body, html {
 
 /* Gradient Layer */
 .quote-container {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 0, 0, 0.4), rgba(255, 255, 0, 0.2), rgba(255, 192, 203, 0.3));
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(255, 0, 0, 0.4), rgba(255, 255, 0, 0.4));
     backdrop-filter: blur(10px);
     height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    overflow: hidden;
     position: relative;
 }
 
 .quote {
     font-size: 2vw;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', serif;
     font-weight: bold; /* Bold text */
+    font-style: italic;
     color: black;
     opacity: 0.8;
     padding: 20px;
@@ -95,25 +104,27 @@ body, html {
 
 /* Footer */
 footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background: rgba(255, 255, 255, 0.1);
-    font-size: 0.8vw;
-    color: #222;
     position: absolute;
     bottom: 0;
     width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 0.8vw;
+    color: #222;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.bottom-left {
-    flex: 1;
-    text-align: left;
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 10px;
 }
 
-.bottom-right {
-    flex: 1;
-    text-align: right;
+.bottom-left, .bottom-right {
+    margin: 0;
 }
 
 .centered-footer {
@@ -139,7 +150,7 @@ footer {
 /* Responsive Design */
 @media (max-width: 768px) {
     .header h1 {
-        font-size: 10vw;
+        font-size: 12vw;
     }
 
     .quote {
